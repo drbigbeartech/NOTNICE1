@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOTNICE - Luxury Rebellion</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <div class="logo-cross">✠</div>
+                    <div class="logo-text">
+                        <h1>NOTNICE</h1>
+                        <span class="tagline">LUXURY REBELLION</span>
+                    </div>
+                </div>
+                <nav class="nav">
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#products" class="nav-link">Collection</a>
+                    <a href="#admin" class="nav-link">Admin</a>
+                </nav>
+                <div class="cart-section">
+                    <button class="cart-btn" id="cartBtn">
+                        <span class="cart-icon">🛒</span>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-cross">✠</div>
+            <h2 class="hero-title">REBELLION REFINED</h2>
+            <p class="hero-subtitle">Gothic luxury fashion for the modern rebel</p>
+            <button class="btn btn--primary hero-cta" onclick="document.getElementById('products').scrollIntoView()">
+                EXPLORE COLLECTION
+            </button>
+        </div>
+        <div class="hero-pattern"></div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section" id="products">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">OUR COLLECTION</h2>
+                <p class="section-subtitle">Handcrafted luxury for the rebellious soul</p>
+            </div>
+            
+            <!-- Filter Bar -->
+            <div class="filter-bar">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="Hoodies">Hoodies</button>
+                <button class="filter-btn" data-filter="Jewelry">Jewelry</button>
+                <button class="filter-btn" data-filter="T-Shirts">T-Shirts</button>
+                <button class="filter-btn" data-filter="Outerwear">Outerwear</button>
+                <button class="filter-btn" data-filter="Accessories">Accessories</button>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Admin Panel -->
+    <section class="admin-section" id="admin">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">ADMIN PANEL</h2>
+                <p class="section-subtitle">Manage your collection</p>
+            </div>
+            
+            <div class="admin-panel">
+                <div class="upload-form-container">
+                    <form class="upload-form" id="uploadForm">
+                        <div class="form-group">
+                            <label class="form-label">Product Image</label>
+                            <input type="file" class="form-control file-input" id="productImage" accept="image/*">
+                            <div class="file-preview" id="filePreview"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Product Name</label>
+                            <input type="text" class="form-control" id="productName" placeholder="Enter product name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Description</label>
+                            <textarea class="form-control" id="productDescription" rows="3" placeholder="Enter product description" required></textarea>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Price ($)</label>
+                                <input type="number" class="form-control" id="productPrice" placeholder="0.00" step="0.01" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Category</label>
+                                <select class="form-control" id="productCategory" required>
+                                    <option value="">Select category</option>
+                                    <option value="Hoodies">Hoodies</option>
+                                    <option value="Jewelry">Jewelry</option>
+                                    <option value="T-Shirts">T-Shirts</option>
+                                    <option value="Outerwear">Outerwear</option>
+                                    <option value="Accessories">Accessories</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Tags (comma separated)</label>
+                            <input type="text" class="form-control" id="productTags" placeholder="gothic, luxury, cross">
+                        </div>
+                        
+                        <button type="submit" class="btn btn--primary btn--full-width">
+                            ADD PRODUCT
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Modal -->
+    <div class="modal" id="cartModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Your Cart</h3>
+                <button class="modal-close" id="closeCartModal">×</button>
+            </div>
+            <div class="modal-body" id="cartItems">
+                <!-- Cart items will be displayed here -->
+            </div>
+            <div class="modal-footer">
+                <div class="cart-total" id="cartTotal">Total: $0.00</div>
+                <button class="btn btn--primary" id="checkoutBtn">CHECKOUT</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <div class="logo-cross">✠</div>
+                        <div class="logo-text">
+                            <h3>NOTNICE</h3>
+                            <span class="tagline">LUXURY REBELLION</span>
+                        </div>
+                    </div>
+                    <p>Gothic luxury fashion for the modern rebel. Handcrafted with precision and designed for those who dare to be different.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Collection</h4>
+                        <a href="#products">Hoodies</a>
+                        <a href="#products">Jewelry</a>
+                        <a href="#products">T-Shirts</a>
+                        <a href="#products">Outerwear</a>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Customer Care</h4>
+                        <a href="#">Size Guide</a>
+                        <a href="#">Shipping</a>
+                        <a href="#">Returns</a>
+                        <a href="#">Contact</a>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Connect</h4>
+                        <a href="#" target="_blank">Instagram</a>
+                        <a href="#" target="_blank">Twitter</a>
+                        <a href="#" target="_blank">Facebook</a>
+                        <a href="#" target="_blank">Email</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-pattern">✠ ✠ ✠ ✠ ✠</div>
+                <p>&copy; 2025 NOTNICE. All rights reserved. Luxury rebellion redefined.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
